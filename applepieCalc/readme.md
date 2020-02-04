@@ -1,4 +1,4 @@
-#Æbletærte beregneren 
+# Æbletærte beregneren 
 
 Denne php side kan beregne hvor mange ingredienser der skal benyttes til at producere en æbletærte ud fra antallet af personer der beregnes efter. 
 Indtast et antal personer og se hvor meget du skal bruge. 
