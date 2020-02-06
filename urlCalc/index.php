@@ -26,7 +26,7 @@
             <div class='headertext'>You'll need to input all three parameters to calculate a number. </div>
     
             <p>Example:</p>
-            <div id='example'>http://localhost?a=1&b=2&operator=plus</div>
+            <div id='example'>http://localhost:[PORT]?a=1&b=2&operator=plus</div>
         </div>";
 
         }
