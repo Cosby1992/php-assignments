@@ -27,10 +27,10 @@
             /** Save userdata from POST form in SQL database */
 
         // database info
-        $servername = "localhost";
-        $username = "root";
-        $password = "password";
-        $dbname = "php_user_data";
+        $servername = "localhost"; 
+        $username = "username"; // <------------- replace with your db settings
+        $password = "password"; // <------------- replace with your db settings
+        $dbname = "databasename"; // <----------- replace with your db name settings
 
         // create db connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -40,11 +40,16 @@
             die("Connection to sql-db failed: " . $conn->connect_error);
         }
 
-        // prepare sql statements and bind
-        $stmt = $conn->prepare("INSERT INTO userdata (username, age) VALUES(?,?)");
+
+        //replace table name with your table name in your db
+        //                                      |
+        // prepare sql statements and bind      |
+        //                                      |
+        //                                      V
+        $stmt = $conn->prepare("INSERT INTO tablename (username, age) VALUES(?,?)"); 
         $stmt->bind_param("sd", $usrname, $age);
 
-        // use arguments (from POST form) in prepared statement
+        // use arguments (from POST request) in prepared statement
         $usrname = $_POST['username'];
         $age = $_POST['age'];
 
