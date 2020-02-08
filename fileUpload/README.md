@@ -6,6 +6,8 @@ This "webapp" let's the user select an image (jpg, jpeg, png) on their system an
 
 -------------------------------------------------------------------
 To try this: 
+
+
 0. Install php on your computer
 1. Clone this code from github
 2. Open your terminal
