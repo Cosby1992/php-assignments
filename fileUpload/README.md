@@ -1,5 +1,4 @@
-# Upload file
-###                   - a php story
+# Upload file - a php story
 
 
 This "webapp" let's the user select an image (jpg, jpeg, png) on their system and upload it to the server in a root folder (uploads). 
