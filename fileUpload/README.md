@@ -1,7 +1,9 @@
 # Upload file
-### </t> - a php story
+###                   - a php story
+
 
 This "webapp" let's the user select an image (jpg, jpeg, png) on their system and upload it to the server in a root folder (uploads). 
+
 -------------------------------------------------------------------
 To try this: 
 0. Install php on your computer
