@@ -29,6 +29,8 @@ html, body {
 
     position: fixed;
     bottom: 50px;
+    left: auto;
+    right: auto;
 
 }
 
@@ -42,6 +44,8 @@ html, body {
     height: 75px;
     width: 600px;
 }
+
+
 
 @media (max-width: 767.98px) { 
     

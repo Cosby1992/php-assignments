@@ -6,7 +6,7 @@
     <title>No Face Chat</title>
 
     <link rel="stylesheet" href="faceStyle.css">
-    <link rel="stylesheet" href="messages.css">
+    <link rel="stylesheet" href="message.css">
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -20,18 +20,15 @@
 
     <h1>No Face Chat</h1>
 
-        <?php
-            // loop through database
-            // for each message echo username, timestamp and message
-
-        ?>
-
         <div class="msgscrollview">
-            <div class="msgcontainer">
-                <div class="usernameText">anonymous</div>
-                <div class="timestampText">00:45 09-02-2020</div>
-                <div class="msgText">Hej, er der nogle frække piger på linjen? Jeg er ny her på chatrouletten.</div>
-            </div>
+
+            <?php
+                include './database/database.php';
+
+                getMessages();
+
+            ?>
+
         </div>
 
         

@@ -18,7 +18,12 @@ if ($conn->connect_error) {
 
 // using prepared statement from messagesdb.php to save method in db
 function sendAnonMsg($msg) {
-    sendMessageAnon($GLOBALS['conn'], $msg);
+    createMessageAnon($GLOBALS['conn'], $msg);
+}
+
+// using method from messagesdb.php to get messages from db
+function getMessages() {
+    readMessages($GLOBALS['conn']);
 }
 
 
