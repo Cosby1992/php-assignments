@@ -1,5 +1,4 @@
 
-
 <?php
 
     function checkAuth() {
@@ -9,10 +8,10 @@
             return;
 
         } else {
+            // user not authenticated, send to login
             header('location: login/login.php');
         }
         
     }
-
 
 ?>
