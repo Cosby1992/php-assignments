@@ -21,6 +21,27 @@
 
     }
 
+    function createMessage($conn, $usrname, $msg) {
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // prepare and bind
+        $stmt = $conn->prepare("INSERT INTO messages (username, message) VALUES (?, ?)");
+        $stmt->bind_param("ss",$username, $message);
+
+        $message = $msg;
+        $username = $usrname;
+
+        $stmt->execute();
+
+        $stmt->close();
+        $conn->close();
+
+    }
+
     function readMessages($conn){
                 
         // Check connection

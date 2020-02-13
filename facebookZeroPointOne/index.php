@@ -13,6 +13,38 @@
 </head>
 <body>
 
+<?php
+
+    session_start();
+
+    include './index.inc.php';
+    include './database/database.inc.php';
+
+    checkAuth();
+
+    if (!empty($_POST['msg']) && isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+        sendMsg($_SESSION['username'], $_POST['msg']);
+        header('location: index.php');
+    }
+
+    // works: signUp("admin", "pwd", "123");
+
+    // works: getUser("admin"); //retrives an array of userdata
+
+    // works & prints: print_r(getUser("admin"));
+
+    /* works: 
+    if(comTokens("admin", "124") === true) {
+        echo "true";
+    } else echo "false";
+    */
+
+
+
+
+
+?>
+
 <div class="container">
 
 
@@ -23,8 +55,7 @@
         <div class="msgscrollview">
 
             <?php
-                include './database/database.php';
-
+                
                 getMessages();
 
             ?>
@@ -35,7 +66,7 @@
     </div>
 
     <div id="sendTextContainer">
-        <form action="/sendmsg.php" method="post">
+        <form action="/index.php" method="post">
             <input type="text" class="form-control" name="msg" id="msginput">
             <button type="submit" class="btn btn-primary" id="sendbtn">Send</button>
         </form>

@@ -1,7 +1,7 @@
 
 <?php
 
-    require './database/database.php';
+    require './database/database.inc.php';
 
     if (empty($_POST['msg'])){
         header('location: /index.php');
@@ -12,7 +12,6 @@
         header('location: index.php');
 
     }
-
 
 
 ?>
