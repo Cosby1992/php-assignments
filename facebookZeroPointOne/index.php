@@ -21,26 +21,44 @@
     include './index.inc.php';
     include './database/database.inc.php';
 
+    if(isset($_POST['logout'])){
+        // remove all session variables
+        session_unset();
+
+        // destroy the session
+        session_destroy();
+    }
+
     // check if user is authenticated
     checkAuth();
 
-    // Send message if one is present
-    if (!empty($_POST['msg']) && isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    if (!empty($_POST['msg'])){
         sendMsg($_SESSION['username'], $_POST['msg']);
+
         header('location: index.php');
     }
 
 ?>
 
-<div class="container">
+    <div class="container">
 
         <div class="container-sm">
+
+            <?php
+
+                if(isset($_SESSION['username'])){
+                    echo "<p>You're logged in as " . $_SESSION['username'] . "</p>";
+                } else {
+                    echo "You're logged in";
+                }
+
+            ?>
 
             <h1>No Face Chat</h1>
 
             <!-- Form that posts on sendmsg.php, that updates db -->
             <div class="form-cont">
-                <form action="/sendmsg.php" method="post">
+                <form action="/index.php" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Write here!" aria-label="Message" aria-describedby="basic-addon2" name="msg">
                         <div class="input-group-append">
@@ -60,6 +78,14 @@
                 ?>
 
             </div>
+
+            <form action="index.php" method="post">
+                <button type="submit" class="btn btn-secondary" name='logout'>Log out</button>
+            </form>
+
+        </div>
+
+    </div>   
 
     <!-- Bootstrap js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
