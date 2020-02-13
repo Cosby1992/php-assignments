@@ -21,7 +21,7 @@
             header("location: ../index.php");
             
         } else {
-            header("location: /login/login.php");
+            header("location: /login/login.php?usrname=$username");
         }
 
     }

@@ -18,34 +18,30 @@
         include 'authuser.inc.php';
 
         if(isset($_POST['login'])) {
-
-            echo "<p class='debug'>login button pressed</p>";
-
+    
             if(!isset($_POST['uid']) || empty($_POST['uid'])){
-                echo "<p class='debug'>Missing username</p>";
+                $err = "Missing username";
+                $errCode = 1;
             } elseif (!isset($_POST['pwd']) || empty($_POST['pwd'])) {
-                echo "<p class='debug'>Missing password</p>";
+                $err = "Missing password";
+                $errCode = 2;
             } else {
                 login($_POST['uid'], $_POST['pwd']);
             }
 
-
         } elseif (isset($_POST['register'])) {
 
-            echo "<p class='debug'>register button pressed</p>";
-
             if(!isset($_POST['uid']) || empty($_POST['uid'])){
-                echo "<p class='debug'>Missing username</p>";
+                $err = "Missing username";
+                $errCode = 1;
             } elseif (!isset($_POST['pwd']) || empty($_POST['pwd'])) {
-                echo "<p class='debug'>Missing password</p>";
+                $err = "Missing password";
+                $errCode = 2;
             } else {
                 signUp($_POST['uid'], $_POST['pwd'], "tempToken");
             }
-            
 
         }
-
-    
 
     ?>
 
@@ -58,11 +54,42 @@
     </div>
     <div class="main">
         <div class="col-md-6 col-sm-12">
+            
             <div class="login-form">
-            <form action="login.php" method="POST"> <!-- TODO: create action page and refer here -->
+
+                <div class="errormsg">
+                    <?php
+                        if(isset($err)){
+                        echo $err;
+                        }
+                    ?>
+                </div>
+
+
+            <form action="login.php" method="POST"> 
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" name="uid">
+                    <?php
+
+                    if(!empty($_GET['usrname'])){
+                        echo '<input type="text" class="form-control" value=' . $_GET['usrname'] . ' name="uid">';
+                    } elseif (isset($errCode)) {
+                        switch($errCode){
+                            case 1: 
+                                echo '<input type="text" class="form-control" placeholder="Username" name="uid" autofocus>';
+                                break;
+                            case 2:     
+                                echo '<input type="text" class="form-control" placeholder="Username" name="uid">';
+                                break;
+                            default:     
+                                echo '<input type="text" class="form-control" placeholder="Username" name="uid">';
+                                break;
+                        }
+                    } else {
+                        echo '<input type="text" class="form-control" placeholder="Username" name="uid">';
+                    }
+                    ?>
+                    
                 </div>
                 <div class="form-group">
                     <label>Password</label>

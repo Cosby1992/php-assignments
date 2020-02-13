@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Vært: 127.0.0.1
--- Genereringstid: 09. 02 2020 kl. 14:52:39
+-- Genereringstid: 13. 02 2020 kl. 23:05:31
 -- Serverversion: 10.1.37-MariaDB
 -- PHP-version: 7.3.0
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nofacechat`
+-- Database: `chatteren`
 --
 
 -- --------------------------------------------------------
@@ -35,14 +35,19 @@ CREATE TABLE `messages` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Data dump for tabellen `messages`
+-- Struktur-dump for tabellen `users`
 --
 
-INSERT INTO `messages` (`id`, `username`, `message`, `timestamp`) VALUES
-(15, 'anonymous', 'Hej chat-roulette', '2020-02-09 13:49:37'),
-(16, 'anonymous', '[image of penis]', '2020-02-09 13:49:37'),
-(18, 'anonymous', 'classic', '2020-02-09 13:50:10');
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rem_token` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Begrænsninger for dumpede tabeller
@@ -55,6 +60,13 @@ ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks for tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- Brug ikke AUTO_INCREMENT for slettede tabeller
 --
 
@@ -62,7 +74,13 @@ ALTER TABLE `messages`
 -- Tilføj AUTO_INCREMENT i tabel `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- Tilføj AUTO_INCREMENT i tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

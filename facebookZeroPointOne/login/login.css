@@ -16,6 +16,13 @@ body {
     padding-top: 20px;
 }
 
+.errormsg {
+    font-weight: 700;
+    font-size: small;
+    color: rgb(114, 0, 0);
+    margin-bottom: 1rem;
+}
+
 
 .main {
     padding: 0px 10px;

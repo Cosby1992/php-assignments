@@ -34,6 +34,7 @@
 
     if (!empty($_POST['msg'])){
         sendMsg($_SESSION['username'], $_POST['msg']);
+        $_SESSION['msgCounter']++;
 
         header('location: index.php');
     }
@@ -48,13 +49,12 @@
 
                 if(isset($_SESSION['username'])){
                     echo "<p>You're logged in as " . $_SESSION['username'] . "</p>";
-                } else {
-                    echo "You're logged in";
-                }
+                    echo "<p>You've sent " . $_SESSION['msgCounter'] . " messeges in this session so far.</p>";
+                } 
 
             ?>
 
-            <h1>No Face Chat</h1>
+            <h1>Chatteren</h1>
 
             <!-- Form that posts on sendmsg.php, that updates db -->
             <div class="form-cont">
